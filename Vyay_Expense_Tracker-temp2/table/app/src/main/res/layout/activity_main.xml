@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_weight="1"
+        android:background="@android:color/black"
+        android:orientation="horizontal">
+
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="30dp"
+            android:format12Hour="hh:mm:ss"
+            android:text="00:00:00"
+            android:textColor="@android:color/white"
+            android:textSize="60sp" />
+
+        <TextClock
+            android:id="@+id/textampmid"
+            android:layout_width="105dp"
+            android:layout_height="61dp"
+            android:layout_marginLeft="10dp"
+            android:format12Hour="a"
+            android:text="00:00:00"
+            android:textColor="@android:color/white"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="277dp"
+        android:layout_weight="1"
+        android:background="@android:color/darker_gray">
+
+        <!--child 1-->
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="342dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_blue_bright">
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:onClick="READ_AMOUNT"
+            android:text="Get amount" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="READ_DATE"
+            android:text="Get Date" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SMS Date" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Amount" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Selected date" />
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
+
+
