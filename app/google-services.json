@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1033126384243",
+    "project_id": "vyay-expense-tracker",
+    "storage_bucket": "vyay-expense-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033126384243:android:1b0f17746f9423740ad006",
+        "android_client_info": {
+          "package_name": "com.example.vyay_expense_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033126384243-5ov195ik5c7irhbd9hkmb0vlkbq5rhc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5Le9AvDeekmE_Y_4dAhPEcO6selsxJt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033126384243-5ov195ik5c7irhbd9hkmb0vlkbq5rhc8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
