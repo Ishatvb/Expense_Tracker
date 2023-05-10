@@ -13,31 +13,10 @@
         android:theme="@style/Theme.Vyay_expense_tracker"
         tools:targetApi="31">
         <activity
-            android:name=".activity_user_profile"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_upload_profile_pic"
-            android:exported="false" />
-        <activity
-            android:name=".activity_update_profile"
-            android:exported="false" />
-        <activity
-            android:name=".activity_update_email"
-            android:exported="false" />
-        <activity
-            android:name=".activity_register"
-            android:exported="false" />
-        <activity
-            android:name=".activity_login"
-            android:exported="false" />
-        <activity
-            android:name=".activity_forgot_password"
-            android:exported="false" />
-        <activity
-            android:name=".activity_delete_profile"
-            android:exported="false" />
-        <activity
-            android:name=".activity_change_password"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

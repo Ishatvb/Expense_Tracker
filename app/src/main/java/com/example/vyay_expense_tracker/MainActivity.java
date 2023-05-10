@@ -23,17 +23,17 @@ public class MainActivity extends AppCompatActivity {
         logoIV.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
         //set the title
-        getSupportActionBar().setTitle("Vyay");
+        //getSupportActionBar().setTitle("Vyay");
 
-        //Open login activity
-        Button buttonLogin =findViewById(R.id.button_login);
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+//        //Open login activity
+//        Button buttonLogin =findViewById(R.id.button_login);
+//        buttonLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         //Open registration activity
         Button buttonRegister =findViewById(R.id.button_register);
         buttonRegister.setOnClickListener(new View.OnClickListener() {

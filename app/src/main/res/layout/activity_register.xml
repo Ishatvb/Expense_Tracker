@@ -196,6 +196,7 @@
                         android:layout_toEndOf="@id/imageViewDoB"
                         android:background="@android:color/transparent"
                         android:hint="select your DOB"
+                        android:focusable="false"
                         android:inputType="date"
                         android:minHeight="48dp"
                         android:padding="6dp"

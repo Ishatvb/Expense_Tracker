@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".LoginActivity">
 
-    <ScrollView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/light_gray"
-        tools:context=".LoginActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +17,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:orientation="vertical"
-                android:background="@color/purple_700">
+                android:background="@color/purple_700"
+                android:id="@+id/linearlayout">
 
                 <TextView
                     android:id="@+id/textView_login_head"
@@ -28,28 +26,32 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:textColor="@color/white"
+                    android:padding="5dp"
                     android:text="Welcome back!"
+                    android:background="@color/p2"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <TextView
                     android:id="@+id/textView_login_instruction"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Please log in to continue"
+                    android:layout_height="52dp"
+                    android:background="@color/p2"
+                    android:text="Please enter your credentials to login"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-50dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="15dp"
+                android:layout_below="@+id/linearlayout"
                 android:background="@drawable/border"
                 android:padding="15dp">
 
@@ -95,7 +97,6 @@
                         android:hint="Enter email"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:inputType="textEmailAddress"
                         android:padding="6dp"
                         android:textSize="16sp" />
@@ -107,7 +108,7 @@
                     android:id="@+id/RL_pwd"
                     android:layout_below="@id/RL_email"
                     android:background="@drawable/border"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="20dp">
 
                     <ImageView
                         android:layout_width="35dp"
@@ -142,7 +143,6 @@
                         android:layout_toEndOf="@id/imageViewPwd"
                         android:background="@android:color/transparent"
                         android:hint="Enter password"
-                        android:textCursorDrawable="@drawable/edittextcursor"
                         android:inputType="textPassword"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
