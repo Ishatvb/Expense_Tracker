@@ -172,11 +172,11 @@ public class RegisterActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     registerUser(textFullName,textEmail,textDob,textGender,textMobile,textPwd);
                 }
-        }
+            }
 
-    });
-}
-//register user using the credentials given
+        });
+    }
+    //register user using the credentials given
     private void registerUser(String textFullName, String textEmail, String textDob, String textGender, String textMobile, String textPwd) {
         FirebaseAuth auth=FirebaseAuth.getInstance();
         //create user profile
