@@ -101,6 +101,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (firebaseUser.isEmailVerified()) {
                         Toast.makeText(LoginActivity.this, "You are logged in now", Toast.LENGTH_SHORT).show();
                         //open user profile
+                        //start the user profile activity
+                        startActivity(new Intent(LoginActivity.this,UserProfileActivity.class));
+                        finish();//close login activity
                     }else{
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut();
@@ -145,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         //create the alert dialog
         AlertDialog alertDialog=builder.create();
-        //shoe the alert dialog
+        //show the alert dialog
         alertDialog.show();
     }
     //chech if user is already logged in . In such case , straightaway take the user to the user's profile
@@ -155,8 +158,11 @@ public class LoginActivity extends AppCompatActivity {
         if(authProfile.getCurrentUser()!=null){
             Toast.makeText(LoginActivity.this,"Already Logged In!",Toast.LENGTH_SHORT).show();
             //start the user profile activity
+            startActivity(new Intent(LoginActivity.this,UserProfileActivity.class));
+            finish();//close login activity
         }
         else{
+            Toast.makeText(LoginActivity.this,"You can login now!",Toast.LENGTH_SHORT).show();
 
         }
     }

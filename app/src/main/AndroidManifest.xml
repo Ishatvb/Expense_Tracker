@@ -19,12 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vyay_expense_tracker"
         tools:targetApi="31">
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+
         <receiver
             android:name=".MySmsReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
