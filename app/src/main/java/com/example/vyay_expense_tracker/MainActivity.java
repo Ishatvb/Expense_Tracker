@@ -91,7 +91,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getAmountFromMessage(String message) {
+        String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(message);
+        String amount;
+        if (matcher.find()){
+            amount=matcher.group(0);
+            dbHandler=new DBHandler(MainActivity.this);
+            int f=dbHandler.newPayment(amount,"Burger");
+            if(f>0)
+                Toast.makeText(this, "Amount "+amount+" noted", Toast.LENGTH_SHORT).show();
+            dbHandler.close();
 
+        }
     }
     private void getDateFromMessage(String message) {
 

@@ -34,20 +34,25 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public void newPayment(String amount,String reason){
-        Toast.makeText(null, "new payment", Toast.LENGTH_SHORT).show();
-        SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues values=new ContentValues();
+    public int newPayment(String amount,String reason){
+        int f=0;
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
 
-        values.put(DATE,"10/10/2023");
-        values.put(TIME,"10:20:56");
+            values.put(DATE, "10/10/2023");
+            values.put(TIME, "10:20:56");
 
-        values.put(AMOUNT,amount);
-        values.put(REASON,reason);
-
-        db.insert(TABLE_NAME,null,values);
-        db.close();
-        Toast.makeText(null, "Payment Noted", Toast.LENGTH_SHORT).show();
+            values.put(AMOUNT, amount);
+            values.put(REASON, reason);
+            db.insert(TABLE_NAME, null, values);
+            f=1;
+            db.close();
+            f=2;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return f;
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
