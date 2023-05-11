@@ -133,6 +133,42 @@ public class UserProfileActivity extends AppCompatActivity {
         int id =item.getItemId();
 
         if(id==R.id.menu_refresh){
+            //refresh activity
+            startActivity(getIntent());
+            finish();
+            overridePendingTransition(0,0);
+        }
+//        else if(id==R.id.menu_update_profile){
+//            Intent intent=new Intent(UserProfileActivity.this,UpdateProfileActivity.class);
+//            startActivity(intent);
+//        }
+//        else if(id==R.id.menu_update_email){
+//            Intent intent=new Intent(UserProfileActivity.this,UpdateEmailActivity.class);
+//            startActivity(intent);
+//        }
+//        else if(id==R.id.menu_settings){
+//            Toast.makeText(UserProfileActivity.this, "Menu Settings", Toast.LENGTH_SHORT).show();
+//        }
+//        else if(id==R.id.menu_change_password){
+//            Intent intent=new Intent(UserProfileActivity.this,ChangePasswordActivity.class);
+//            startActivity(intent);
+//        }
+//        else if(id==R.id.menu_delete_profile){
+//            Intent intent=new Intent(UserProfileActivity.this,DeleteProfileActivity.class);
+//            startActivity(intent);
+//          }
+          else if(id ==R.id.menu_logout){
+            authProfile.signOut();
+            Toast.makeText(UserProfileActivity.this, "Logget Out!", Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(UserProfileActivity.this,MainActivity.class);
+
+            //clear the stack to prevent user coming back to userprofileactivity on pressing back button
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();//close userprofileactivity
+        }
+        else {
+            Toast.makeText(UserProfileActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
 
         }
         return super.onOptionsItemSelected(item);
