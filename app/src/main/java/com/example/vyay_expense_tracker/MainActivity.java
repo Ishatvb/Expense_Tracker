@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Intent intent) {
                 startActivityForResult(intent, REQ_USER_CONSENT);
+
                 //on.launch(intent);
             }
             @Override
