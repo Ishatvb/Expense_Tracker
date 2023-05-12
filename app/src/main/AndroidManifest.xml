@@ -17,8 +17,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Vyay_expense_tracker"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".ExpensesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowExpenseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UploadProfilePicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
         <activity
             android:name=".UserProfileActivity"
             android:exported="false" />

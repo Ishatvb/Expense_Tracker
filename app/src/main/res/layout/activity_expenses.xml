@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UserProfileActivity"
+    android:background="@color/p4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/p2">
+
+            <RelativeLayout
+                android:id="@+id/RL_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextClock
+                    android:id="@+id/textClock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:format12Hour="hh:mm:ss"
+                    android:text="00:00:00"
+                    android:textColor="@android:color/white"
+                    android:textSize="60sp" />
+
+                <TextClock
+                    android:id="@+id/textampmid"
+                    android:layout_width="100dp"
+                    android:layout_height="61dp"
+                    android:layout_marginLeft="270dp"
+                    android:format12Hour="a"
+                    android:text="00:00:00"
+                    android:textColor="@android:color/white"
+                    android:textSize="50sp" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_profile_pic"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="110dp"
+                    android:elevation="10dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <CalendarView
+                android:id="@+id/calendarView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="80dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/p1" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:onClick="READ_AMOUNT"
+                    android:text="Get amount" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="66dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="READ_DATE"
+                    android:text="Get Date" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SMS Date" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Amount" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Selected date" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider_name"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="90dp"
+                android:background="@android:color/darker_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RL_email"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/divider_name"/>
+
+            <View
+                android:id="@+id/divider_email"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_email"
+                android:background="@android:color/darker_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RL_dob"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/divider_email"/>
+
+            <View
+                android:id="@+id/divider_dob"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_dob"
+                android:background="@android:color/darker_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RL_gender"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/divider_dob"/>
+
+            <View
+                android:id="@+id/divider_gender"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/RL_gender"
+                android:background="@android:color/darker_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RL_mobile"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/divider_gender"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:elevation="10dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/button_show_expenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Track all Todays expenses" />
+
+
+    </LinearLayout>
+</ScrollView>

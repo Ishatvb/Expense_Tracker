@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         logoIV.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
         //set the title
-        //getSupportActionBar().setTitle("Expense Manager");
+        getSupportActionBar().setTitle("Expense Manager");
 
         //Open login activity
         Button buttonLogin =findViewById(R.id.button_login);

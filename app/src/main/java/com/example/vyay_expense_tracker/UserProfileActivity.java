@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        //getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle("Profile");
         textViewWelcome =findViewById(R.id.textView_show_welcome);
         textViewFullName=findViewById(R.id.textView_show_full_name);
         textViewEmail=findViewById(R.id.textView_show_email);
@@ -43,6 +44,27 @@ public class UserProfileActivity extends AppCompatActivity {
         textViewGender=findViewById(R.id.textView_show_gender);
         textViewMobile=findViewById(R.id.textView_show_mobile);
         progressBar=findViewById(R.id.progress_bar);
+
+        Button buttonTrackExpense = findViewById(R.id.button_track_expenses);
+        buttonTrackExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(UserProfileActivity.this,ExpenseActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //set OnClicklistener on imageview to open uploadProfilePicActivity
+        imageView=findViewById(R.id.imageView_profile_dp);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(UserProfileActivity.this,UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
         authProfile=FirebaseAuth.getInstance();
         FirebaseUser firebaseUser=authProfile.getCurrentUser();
 
@@ -132,12 +154,12 @@ public class UserProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id =item.getItemId();
 
-        if(id==R.id.menu_refresh){
+          if(id==R.id.menu_refresh){
             //refresh activity
             startActivity(getIntent());
             finish();
             overridePendingTransition(0,0);
-        }
+          }
 //        else if(id==R.id.menu_update_profile){
 //            Intent intent=new Intent(UserProfileActivity.this,UpdateProfileActivity.class);
 //            startActivity(intent);
@@ -149,14 +171,14 @@ public class UserProfileActivity extends AppCompatActivity {
 //        else if(id==R.id.menu_settings){
 //            Toast.makeText(UserProfileActivity.this, "Menu Settings", Toast.LENGTH_SHORT).show();
 //        }
-//        else if(id==R.id.menu_change_password){
+//          else if(id==R.id.menu_change_password){
 //            Intent intent=new Intent(UserProfileActivity.this,ChangePasswordActivity.class);
 //            startActivity(intent);
 //        }
 //        else if(id==R.id.menu_delete_profile){
 //            Intent intent=new Intent(UserProfileActivity.this,DeleteProfileActivity.class);
 //            startActivity(intent);
-//          }
+//        }
           else if(id ==R.id.menu_logout){
             authProfile.signOut();
             Toast.makeText(UserProfileActivity.this, "Logget Out!", Toast.LENGTH_SHORT).show();
@@ -166,11 +188,11 @@ public class UserProfileActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();//close userprofileactivity
-        }
-        else {
+          }
+          else {
             Toast.makeText(UserProfileActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
 
-        }
-        return super.onOptionsItemSelected(item);
+          }
+          return super.onOptionsItemSelected(item);
     }
 }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,13 +16,13 @@
             <RelativeLayout
                 android:id="@+id/layout_head"
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="252dp"
                 android:background="@color/p2">
 
                 <RelativeLayout
+                    android:id="@+id/RL_imageView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/RL_imageView">
+                    android:layout_height="wrap_content">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -37,17 +36,18 @@
                             android:id="@+id/imageView_profile_dp"
                             android:layout_width="160dp"
                             android:layout_height="160dp"
-                            android:contentDescription="User display picture"
                             android:background="@drawable/no_profile_pic"
+                            android:contentDescription="User display picture"
                             android:scaleType="centerCrop" />
                     </androidx.cardview.widget.CardView>
+
                     <ProgressBar
                         android:id="@+id/progress_bar_profile_pic"
                         style="?android:attr/progressBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="110dp"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="110dp"
                         android:elevation="10dp"
                         android:visibility="gone" />
                 </RelativeLayout>
@@ -59,7 +59,7 @@
                     android:layout_below="@id/RL_imageView"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="10dp"
                     android:hint="Loading..."
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
@@ -251,11 +251,17 @@
                     android:visibility="gone" />
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/button_track_expenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Track my Expense!" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:text="Registered user since"/>
             <TextView
                 android:layout_width="match_parent"

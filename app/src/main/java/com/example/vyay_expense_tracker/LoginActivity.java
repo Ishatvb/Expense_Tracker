@@ -37,12 +37,25 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //getSupportActionBar().setTitle("Login");
+
+        getSupportActionBar().setTitle("Login");
 
         editTextLoginEmail = findViewById(R.id.editText_login_email);
         editTextLoginPwd = findViewById(R.id.editText_login_pwd);
         progressBar = findViewById(R.id.progressBar);
         authProfile = FirebaseAuth.getInstance();
+
+        //Reset password
+        Button buttonForgotPassword=findViewById(R.id.button_forgot_password);
+        buttonForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "You can reset your password now!",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
+            }
+        });
+
+
         //show hide password using eye icon
         ImageView imageViewShowHidePwd=findViewById(R.id.imageView_show_hide_pwd);
         imageViewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
