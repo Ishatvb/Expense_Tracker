@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             if ((resultCode == RESULT_OK) && (data != null)) {
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                getAmountFromMessage(message);
+                save_payment_to_db();
             }
         }
     }
@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
     String regex2 = "(\\d{1,2}-\\d{1,2}-\\d{2}|\\d{1,2}-\\d{1,2}-\\d{4})";
 
     String regex3 = "^[01]?[0-9]([:.][0-9]{2})?(\\s?[ap]m)?$";
+
+    private void save_payment_to_db(){
+        //
+    }
     private void getAmountFromMessage(String message) {
 
         Pattern pattern = Pattern.compile(regex);
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         if (matcher.find()){
             amount=matcher.group(0);
             dbHandler=new DBHandler(MainActivity.this);
-            int f=dbHandler.newPayment(amount,"Burger");
+            int f=dbHandler.newPayment(amount,"12/7/23","12:10:40","--None--");
             if(f>0)
                 Toast.makeText(this, "Amount "+amount+" noted", Toast.LENGTH_SHORT).show();
             dbHandler.close();
