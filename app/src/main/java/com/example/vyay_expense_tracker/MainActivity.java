@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -89,9 +91,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
+    String regex2 = "(\\d{1,2}-\\d{1,2}-\\d{2}|\\d{1,2}-\\d{1,2}-\\d{4})";
 
+    String regex3 = "^[01]?[0-9]([:.][0-9]{2})?(\\s?[ap]m)?$";
     private void getAmountFromMessage(String message) {
-        String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
+
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(message);
         String amount;
@@ -104,13 +109,38 @@ public class MainActivity extends AppCompatActivity {
             dbHandler.close();
 
         }
+
     }
+
+//    make store func to store vals from the three functions
     private void getDateFromMessage(String message) {
+        Cursor cursor2 = getContentResolver().query(Uri.parse("content://sms"), null, null, null, null);
+        cursor2.moveToFirst();
+        Pattern pattern2 = Pattern.compile(regex2);
+        String text2 = cursor2.getString(12);
+
+        Matcher matcher2 = pattern2.matcher(text2);
+        matcher2.find();
+        String date_string = matcher2.group();
+
+        Toast.makeText(null, date_string, Toast.LENGTH_SHORT).show();
+
 
     }
     private void getTimeFromMessage(String message) {
+        Cursor cursor3 = getContentResolver().query(Uri.parse("content://sms"), null, null, null, null);
+        cursor3.moveToFirst();
+        Pattern pattern3 = Pattern.compile(regex3);
+        String text3 = cursor3.getString(12);
 
+        Matcher  matcher3= pattern3.matcher(text3);
+        matcher3.find();
+        String date_string = matcher3.group();
+
+        Toast.makeText(null, date_string, Toast.LENGTH_SHORT).show();
+//dont have code for this
     }
+
 
 
     private void registerBroadcastReceiver() {
