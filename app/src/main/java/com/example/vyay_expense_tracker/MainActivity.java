@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -72,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
 
     }
 //##################################################################################################
@@ -164,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
 //        dbHandler.newPayment();
 //
 //    }
+
+
 
 
     private void registerBroadcastReceiver() {

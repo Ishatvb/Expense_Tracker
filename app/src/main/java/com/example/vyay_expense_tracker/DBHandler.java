@@ -69,15 +69,18 @@ public class DBHandler extends SQLiteOpenHelper {
 //    db1.insert(TABLE_NAME, null, values);
 //}
 
-    public ArrayList<model>  fetchContact(){
+
+
+    public ArrayList<model> fetchContact(String cal_date){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor =db.rawQuery("SELECT * FROM" + TABLE_NAME + "WHERE" + date_string==selected_date, null);
+        model model_obj=new model();
+        Cursor cursor =db.rawQuery("SELECT * FROM" + TABLE_NAME + "WHERE" +  model_obj.date_string + "=="+ cal_date, null);
 
 
         ArrayList<model> arrDetails = new ArrayList<>();
 
         while(cursor.moveToNext()){
-            model model_obj=new model();
+//            model model_obj=new model();
             model_obj.amount= cursor.getString(0);
             model_obj.date_string= cursor.getString(1);
             model_obj.time_string= cursor.getString(2);
