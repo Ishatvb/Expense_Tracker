@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
 
         Matcher  matcher3= pattern3.matcher(text3);
         matcher3.find();
-        String date_string = matcher3.group();
+        String time_string = matcher3.group();
 
-        Toast.makeText(null, date_string, Toast.LENGTH_SHORT).show();
+        Toast.makeText(null, time_string, Toast.LENGTH_SHORT).show();
 //dont have code for this
     }
 
@@ -159,6 +159,12 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
         registerReceiver(smsBroadcastReceiver, intentFilter);
     }
+
+//    void push_into_db()
+//    public void insertIntoDB(String date_string, String time_string, String amount){
+//        dbHandler=new this.getWri;
+//        dbHandler.this.getWr
+//    }
     @Override
     protected void onStart() {
         super.onStart();
