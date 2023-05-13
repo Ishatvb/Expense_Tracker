@@ -53,7 +53,18 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return f;
     }
-public void InsertIntoDB(String TABLE_NAME, )
+//public void InsertIntoDB(String amount,String date_string,String time_string,String reason){
+//    SQLiteDatabase db1 = this.getWritableDatabase();
+//
+//    ContentValues values=new ContentValues();
+//    values.put(DATE, date_string);
+//    values.put(TIME, time_string);
+//    values.put(AMOUNT, amount);
+//    values.put(REASON, reason);
+//
+//
+//    db1.insert(TABLE_NAME, null, values);
+//}
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

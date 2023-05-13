@@ -23,6 +23,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
+
+//    initializing sms variables
+    public  String date_string;
+    public  String time_string;
+    public  String amount;
+    public  String reason;
+
+
+
     public DBHandler dbHandler;
     private static final int REQ_USER_CONSENT = 200;
     MySmsReceiver smsBroadcastReceiver;
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 //##################################################################################################
     private void startSmsUserConsent() {
@@ -98,19 +108,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void save_payment_to_db(){
         //
+        dbHandler=new DBHandler(MainActivity.this);
+        dbHandler.newPayment(amount, date_string, time_string, reason);
+//        dbHandler.newPayment(amount:amount, );
+
     }
     private void getAmountFromMessage(String message) {
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(message);
-        String amount;
+//        String amount;
         if (matcher.find()){
             amount=matcher.group(0);
-            dbHandler=new DBHandler(MainActivity.this);
-            int f=dbHandler.newPayment(amount,"12/7/23","12:10:40","--None--");
-            if(f>0)
+//            dbHandler=new DBHandler(MainActivity.this);
+//            int f=dbHandler.newPayment(amount,"12/7/23","12:10:40","--None--");
+//            if(f>0)
                 Toast.makeText(this, "Amount "+amount+" noted", Toast.LENGTH_SHORT).show();
-            dbHandler.close();
+//            dbHandler.close();
 
         }
 
@@ -125,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
         Matcher matcher2 = pattern2.matcher(text2);
         matcher2.find();
-        String date_string = matcher2.group();
+         date_string = matcher2.group();
 
         Toast.makeText(null, date_string, Toast.LENGTH_SHORT).show();
 
@@ -139,12 +153,17 @@ public class MainActivity extends AppCompatActivity {
 
         Matcher  matcher3= pattern3.matcher(text3);
         matcher3.find();
-        String time_string = matcher3.group();
+         time_string = matcher3.group();
 
         Toast.makeText(null, time_string, Toast.LENGTH_SHORT).show();
 //dont have code for this
     }
-
+//    private void save_payment_to_db(){
+//        //
+//        dbHandler=new DBHandler(MainActivity.this);
+//        dbHandler.newPayment();
+//
+//    }
 
 
     private void registerBroadcastReceiver() {
@@ -163,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
         registerReceiver(smsBroadcastReceiver, intentFilter);
     }
+
+//    DBHandler.newPayment
 
 //    void push_into_db()
 //    public void insertIntoDB(String date_string, String time_string, String amount){
