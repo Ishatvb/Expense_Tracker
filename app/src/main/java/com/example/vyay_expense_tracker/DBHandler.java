@@ -2,9 +2,12 @@ package com.example.vyay_expense_tracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -66,6 +69,27 @@ public class DBHandler extends SQLiteOpenHelper {
 //    db1.insert(TABLE_NAME, null, values);
 //}
 
+    public ArrayList<model>  fetchContact(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =db.rawQuery("SELECT * FROM" + TABLE_NAME + "WHERE" + date_string==selected_date, null);
+
+
+        ArrayList<model> arrDetails = new ArrayList<>();
+
+        while(cursor.moveToNext()){
+            model model_obj=new model();
+            model_obj.amount= cursor.getString(0);
+            model_obj.date_string= cursor.getString(1);
+            model_obj.time_string= cursor.getString(2);
+
+            arrDetails.add(model_obj);
+
+
+
+        }
+        return arrDetails;
+
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
