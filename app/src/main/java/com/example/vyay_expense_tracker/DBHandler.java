@@ -34,15 +34,14 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public int newPayment(String amount,String reason){
+    public int newPayment(String amount,String date,String time,String reason){
         int f=0;
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
 
-            values.put(DATE, "10/10/2023");
-            values.put(TIME, "10:20:56");
-
+            values.put(DATE, date);
+            values.put(TIME, time);
             values.put(AMOUNT, amount);
             values.put(REASON, reason);
             db.insert(TABLE_NAME, null, values);
