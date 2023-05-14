@@ -24,15 +24,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-
-//    initializing sms variables
-    public  String date_string;
-    public  String time_string;
-    public  String amount;
-    public  String reason;
-
-
-
     public DBHandler dbHandler;
     private static final int REQ_USER_CONSENT = 200;
     MySmsReceiver smsBroadcastReceiver;
@@ -100,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQ_USER_CONSENT) {
             if ((resultCode == RESULT_OK) && (data != null)) {
-                String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                save_payment_to_db();
+                String sms = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
+                Toast.makeText(getApplicationContext(), sms, Toast.LENGTH_LONG).show();
+                save_payment_to_db(sms);
             }
         }
     }
@@ -111,65 +102,46 @@ public class MainActivity extends AppCompatActivity {
 
     String regex3 = "^[01]?[0-9]([:.][0-9]{2})?(\\s?[ap]m)?$";
 
-    private void save_payment_to_db(){
-        //
+    private void save_payment_to_db(String sms){
+        String amount=getAmountFromMessage(sms);
+        String date=getDateFromMessage(sms);
+        String time=getTimeFromMessage(sms);
+        String reason="null";
+        Toast.makeText(this, amount+" : "+date+" : "+time+" : "+reason, Toast.LENGTH_SHORT).show();
         dbHandler=new DBHandler(MainActivity.this);
-        dbHandler.newPayment(amount, date_string, time_string, reason);
-//        dbHandler.newPayment(amount:amount, );
-
+        dbHandler.newPayment(amount, date, time, reason);
     }
-    private void getAmountFromMessage(String message) {
-
+    private String getAmountFromMessage(String sms) {
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(message);
-//        String amount;
+        Matcher matcher = pattern.matcher(sms);
+        String amount;
         if (matcher.find()){
             amount=matcher.group(0);
-//            dbHandler=new DBHandler(MainActivity.this);
-//            int f=dbHandler.newPayment(amount,"12/7/23","12:10:40","--None--");
-//            if(f>0)
-                Toast.makeText(this, "Amount "+amount+" noted", Toast.LENGTH_SHORT).show();
-//            dbHandler.close();
-
+            return amount;
         }
-
+        return "null";
     }
 
-//    make store func to store vals from the three functions
-    private void getDateFromMessage(String message) {
-        Cursor cursor2 = getContentResolver().query(Uri.parse("content://sms"), null, null, null, null);
-        cursor2.moveToFirst();
+    private String getDateFromMessage(String sms) {
         Pattern pattern2 = Pattern.compile(regex2);
-        String text2 = cursor2.getString(12);
-
-        Matcher matcher2 = pattern2.matcher(text2);
-        matcher2.find();
-         date_string = matcher2.group();
-
-        Toast.makeText(null, date_string, Toast.LENGTH_SHORT).show();
-
-
+        Matcher matcher2 = pattern2.matcher(sms);
+        String date_string;
+        if (matcher2.find()){
+            date_string = matcher2.group();
+            return date_string;
+        }
+        return "null";
     }
-    private void getTimeFromMessage(String message) {
-        Cursor cursor3 = getContentResolver().query(Uri.parse("content://sms"), null, null, null, null);
-        cursor3.moveToFirst();
+    private String getTimeFromMessage(String sms) {
         Pattern pattern3 = Pattern.compile(regex3);
-        String text3 = cursor3.getString(12);
-
-        Matcher  matcher3= pattern3.matcher(text3);
-        matcher3.find();
-         time_string = matcher3.group();
-
-        Toast.makeText(null, time_string, Toast.LENGTH_SHORT).show();
-//dont have code for this
+        Matcher matcher3 = pattern3.matcher(sms);
+        String time_string;
+        if (matcher3.find()){
+            time_string = matcher3.group();
+            return time_string;
+        }
+        return "null";
     }
-//    private void save_payment_to_db(){
-//        //
-//        dbHandler=new DBHandler(MainActivity.this);
-//        dbHandler.newPayment();
-//
-//    }
-
 
 
 

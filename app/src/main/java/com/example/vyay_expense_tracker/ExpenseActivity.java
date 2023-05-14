@@ -3,6 +3,7 @@ package com.example.vyay_expense_tracker;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,6 @@ public class ExpenseActivity extends AppCompatActivity {
                 cal_date = (month + 1) + "-" + dayOfMonth + "-" + year;
                 Log.d("date", cal_date);
 
-
 //                                                     textView3.setText(todaydate);
             }
 
@@ -37,10 +37,12 @@ public class ExpenseActivity extends AppCompatActivity {
         });
         ArrayList<model> arrDetails =dbHandler_cal.fetchContact(cal_date);
         int size2 = arrDetails.size();
-
+        String st="";
         for (int i = 0; i < size2; i++) {
             Log.d("amount",  arrDetails.get(i).amount);
+            st= st+" : "+arrDetails.get(i).toString();
         }
+        Toast.makeText(this,st, Toast.LENGTH_SHORT).show();
         }
     }
 
