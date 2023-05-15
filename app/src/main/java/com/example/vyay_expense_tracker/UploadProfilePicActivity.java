@@ -1,19 +1,13 @@
 package com.example.vyay_expense_tracker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -26,44 +20,58 @@ public class UploadProfilePicActivity extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private StorageReference storageReference;
     private FirebaseUser firebaseUser;
+    private static final int PICK_IMAGE_REQUEST=1;
 
 
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_upload_profile_pic);
+
+        getSupportActionBar().setTitle("Upload Profile Picture");
+        Button buttonUploadPicChoose=findViewById(R.id.upload_pic_choose_button);
+        Button buttonUploadPic = findViewById(R.id.upload_pic_button);
+        progressBar=findViewById(R.id.progressBar);
+        imageViewUploadPic=findViewById(R.id.imageView_profile_dp);
+
+        authProfile=FirebaseAuth.getInstance();
+        firebaseUser=authProfile.getCurrentUser();
+
+        storageReference= FirebaseStorage.getInstance().getReference("DisplayPics");
+        Uri uri=firebaseUser.getPhotoUrl();
+        //set user's current DP in Imageview (if uploaded already). we will use Picasso since imageViewer setImage
+        //Regular URIs
+        Picasso.with(UploadProfilePicActivity.this).load(uri).into(imageViewUploadPic);
+
+
+//        buttonUploadPicChoose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_upload_profile_pic);
-//
-//        getSupportActionBar().setTitle("Upload Profile Picture");
-//android:layout_below="@id/RL_name"
-//        Button buttonUploadPicChoose=findViewById(R.id.upload_pic_choose_button);
-//        Button buttonUploadPic = findViewById(R.id.upload_pic_button);
-//        progressBar=findViewById(R.id.progressBar);
-//        imageViewUploadPic=findViewById(R.id.imageView_profile_dp);
-//
-//        authProfile=FirebaseAuth.getInstance();
-//        firebaseUser=authProfile.getCurrentUser();
-//
-//        storageReference= FirebaseStorage.getInstance().getReference("DisplayPics");
-//        Uri uri=firebaseUser.getPhotoUrl();
-//        //set user's current DP in Imageview (if uploaded already). we will use Picasso since imageViewer setImage
-//        //Regular URIs
-//        Picasso.with(UploadProfilePicActivity.this).load(uri).into(imageViewUploadPic);
-//
-//
-//
-//
+//                openFileChooser();
+//            }
+//        });
 //    }
-//    //creating action bar menu
-//
+//    private void openFileChooser(){
+//        Intent intent; new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(intent,PICK_IMAGE_REQUEST);
+
+
+
+
+    //creating action bar menu
+
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        //Inflate menu items
 //        getMenuInflater().inflate(R.menu.common_menu,menu);
 //        return super.onCreateOptionsMenu(menu);
 //    }
-//    //when any menu itm is selected
+    //when any menu itm is selected
 //    @Override
 //    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 //        int id =item.getItemId();
@@ -75,22 +83,22 @@ public class UploadProfilePicActivity extends AppCompatActivity {
 //            overridePendingTransition(0,0);
 //        }
 //        else if(id==R.id.menu_update_profile){
-//            Intent intent=new Intent(UserProfileActivity.this,UpdateProfileActivity.class);
+//            Intent intent=new Intent(UploadProfilePicActivity.this,UpdateProfileActivity.class);
 //            startActivity(intent);
 //        }
 //        else if(id==R.id.menu_update_email){
-//            Intent intent=new Intent(UserProfileActivity.this,UpdateEmailActivity.class);
+//            Intent intent=new Intent(UploadProfilePicActivity.this,UpdateEmailActivity.class);
 //            startActivity(intent);
 //        }
 //        else if(id==R.id.menu_settings){
-//            Toast.makeText(UserProfileActivity.this, "Menu Settings", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(UploadProfilePicActivity.this, "Menu Settings", Toast.LENGTH_SHORT).show();
 //        }
 //          else if(id==R.id.menu_change_password){
-//            Intent intent=new Intent(UserProfileActivity.this,ChangePasswordActivity.class);
+//            Intent intent=new Intent(UploadProfilePicActivity.this,ChangePasswordActivity.class);
 //            startActivity(intent);
 //        }
 //        else if(id==R.id.menu_delete_profile){
-//            Intent intent=new Intent(UserProfileActivity.this,DeleteProfileActivity.class);
+//            Intent intent=new Intent(UploadProfilePicActivity.this,DeleteProfileActivity.class);
 //            startActivity(intent);
 //        }
 //        else if(id ==R.id.menu_logout){
@@ -110,4 +118,4 @@ public class UploadProfilePicActivity extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 //}
-}
+}}
