@@ -26,11 +26,6 @@ public class ExpenseActivity extends AppCompatActivity {
     private ImageView imageView;
     private FirebaseAuth authProfile;
 
-
-
-
-
-
     String  cal_date;
     public DBHandler dbHandler_cal;
     @Override

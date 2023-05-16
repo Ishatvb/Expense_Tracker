@@ -68,17 +68,18 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="240dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/border"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="15dp">
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="367dp"
+                android:layout_height="206dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -86,81 +87,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="SMS Date" />
+                    android:paddingLeft="50dp"
+                    android:text="DATE" />
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Amount" />
+                    android:paddingLeft="50dp"
+                    android:text="TIME" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Selected date" />
+                    android:paddingLeft="50dp"
+                    android:text="AMOUNT" />
             </LinearLayout>
 
-            <View
-                android:id="@+id/divider_name"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="90dp"
-                android:background="@android:color/darker_gray"/>
-
             <RelativeLayout
+                android:id="@+id/RL_show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/RL_email"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@id/divider_name"/>
+                android:layout_marginBottom="10dp" />
 
-            <View
-                android:id="@+id/divider_email"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/RL_email"
-                android:background="@android:color/darker_gray"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/RL_dob"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@id/divider_email"/>
-
-            <View
-                android:id="@+id/divider_dob"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/RL_dob"
-                android:background="@android:color/darker_gray"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/RL_gender"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@id/divider_dob"/>
 
             <View
                 android:id="@+id/divider_gender"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/RL_gender"
-                android:background="@android:color/darker_gray"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/RL_mobile"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/divider_gender"/>
+                android:layout_below="@id/RL_show"
+                android:background="@android:color/darker_gray" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"
