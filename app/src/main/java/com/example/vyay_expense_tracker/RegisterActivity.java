@@ -50,7 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //getSupportActionBar().setTitle("Register");
+        getSupportActionBar().setTitle("Register");
+
         Toast.makeText(RegisterActivity.this,"You can register now",Toast.LENGTH_LONG).show();
         progressBar=findViewById(R.id.progressBar);
         editTextRegisterFullname=findViewById(R.id.editText_register_full_name);
@@ -172,11 +173,11 @@ public class RegisterActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     registerUser(textFullName,textEmail,textDob,textGender,textMobile,textPwd);
                 }
-        }
+            }
 
-    });
-}
-//register user using the credentials given
+        });
+    }
+    //register user using the credentials given
     private void registerUser(String textFullName, String textEmail, String textDob, String textGender, String textMobile, String textPwd) {
         FirebaseAuth auth=FirebaseAuth.getInstance();
         //create user profile
@@ -203,11 +204,11 @@ public class RegisterActivity extends AppCompatActivity {
                                         firebaseUser.sendEmailVerification();
                                         Toast.makeText(RegisterActivity.this,"User registered successfully. Please verify your email",Toast.LENGTH_LONG).show();
 
-//                                        //open user profile after successful registration
-//                                        Intent intent=new Intent(RegisterActivity.this,UserProfileActivity.class);
-//                                        //to prevent user from returning back to register activity on pressing back button after registration
-//                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                        startActivity(intent);
+                                        //open user profile after successful registration
+                                        Intent intent=new Intent(RegisterActivity.this,UserProfileActivity.class);
+                                        //to prevent user from returning back to register activity on pressing back button after registration
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
                                         finish();//to close register activity
                                     }else{
                                         Toast.makeText(RegisterActivity.this,"User registered failed. Please try again",Toast.LENGTH_LONG).show();
