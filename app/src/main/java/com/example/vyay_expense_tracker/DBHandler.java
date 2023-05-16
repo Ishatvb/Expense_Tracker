@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -81,7 +80,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         while(cursor.moveToNext()){
 //            model model_obj=new model();
-            model_obj.amount= cursor.getString(0);
+            model_obj.amount= cursor.getString(3);
             model_obj.date_string= cursor.getString(1);
             model_obj.time_string= cursor.getString(2);
 

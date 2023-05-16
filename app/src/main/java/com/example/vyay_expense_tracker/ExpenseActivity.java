@@ -59,16 +59,7 @@ public class ExpenseActivity extends AppCompatActivity {
         }
         Toast.makeText(this,st, Toast.LENGTH_SHORT).show();
         }
-
-
-
-//int i;
-
-
 //    we have cal_date
-//}
-
-
 
 //creating action bar menu
 
