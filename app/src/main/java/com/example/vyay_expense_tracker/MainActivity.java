@@ -94,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    String regex = "(?i)(?:(?:RS|INR|MRP|debited)\\.?\\s?)([0-9,.]+)\\s?Dt\\s(\\d{1,2}-\\d{1,2}-\\d{2}(?:\\s\\d{1,2}:\\d{1,2}(?:\\s?[ap]m)?)?)";
+//     String regex = "(?i)(?:(?:RS|INR|MRP|debited)\\.?\\s?)([0-9,.]+)\\s?Dt\\s(\\d{1,2}-\\d{1,2}-\\d{2}(?:\\s\\d{1,2}:\\d{1,2}(?:\\s?[ap]m)?)?)";
 
 
-//    String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
-//    String regex2 = "(\\d{1,2}-\\d{1,2}-\\d{2}|\\d{1,2}-\\d{1,2}-\\d{4})";
-//
-//    String regex3 = "^[01]?[0-9]([:.][0-9]{2})?(\\s?[ap]m)?$";
+   String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
+   String regex2 = "(\\d{1,2}-\\d{1,2}-\\d{2}|\\d{1,2}-\\d{1,2}-\\d{4})";
+
+   String regex3 = "([\\d]{1,2}:[\\d]{1,2}|[\\d]{1,2}:[\\d]{1,2})";
 
 
     private void save_payment_to_db(String sms){
@@ -122,21 +122,21 @@ public class MainActivity extends AppCompatActivity {
             return amount;
         }
     private String getDateFromMessage(String sms) {
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(regex2);
         Matcher matcher = pattern.matcher(sms);
         String date="null";
         if (matcher.find()) {
-            date = matcher.group(2);
+            date = matcher.group(1);
         }
             return date;
         }
 
     private String getTimeFromMessage(String sms) {
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(regex3);
         Matcher matcher = pattern.matcher(sms);
         String time="null";
         if (matcher.find()) {
-            time = matcher.group(3);
+            time = matcher.group(1);
         }
             return time;
         }
