@@ -75,8 +75,8 @@ ExpenseActivity ob=new ExpenseActivity();
     public ArrayList<model> fetchContact(String cal_date){
         SQLiteDatabase db = this.getReadableDatabase();
         model model_obj=new model();
-        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  model_obj.date_string + " = "+ ob.cal_date, null);
-//        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
+//        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  model_obj.date_string + " = "+ ob.cal_date, null);
+        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
 
         ArrayList<model> arrDetails = new ArrayList<>();
 
