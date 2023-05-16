@@ -26,10 +26,10 @@ public class ExpenseActivity extends AppCompatActivity {
     private ImageView imageView;
     private FirebaseAuth authProfile;
 
-    String  cal_date;
+   public String  cal_date;
     public DBHandler dbHandler_cal;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
 
