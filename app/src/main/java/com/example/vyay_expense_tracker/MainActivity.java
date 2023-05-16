@@ -1,25 +1,22 @@
 package com.example.vyay_expense_tracker;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -97,10 +94,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
-    String regex2 = "(\\d{1,2}-\\d{1,2}-\\d{2}|\\d{1,2}-\\d{1,2}-\\d{4})";
+//     String regex = "(?i)(?:(?:RS|INR|MRP|debited)\\.?\\s?)([0-9,.]+)\\s?Dt\\s(\\d{1,2}-\\d{1,2}-\\d{2}(?:\\s\\d{1,2}:\\d{1,2}(?:\\s?[ap]m)?)?)";
 
-    String regex3 = "^[01]?[0-9]([:.][0-9]{2})?(\\s?[ap]m)?$";
+
+   String regex = "(?i)(?:(?:RS|INR|MRP|debited|Debited)\\.?\\s?)(\\d+(:?\\,\\d+)?(\\,\\d+)?(\\.\\d{1,2})?)";
+   String regex2 = "(\\d{1,2}-\\d{1,2}-\\d{2}|\\d{1,2}-\\d{1,2}-\\d{4})";
+
+   String regex3 = "([\\d]{1,2}:[\\d]{1,2}|[\\d]{1,2}:[\\d]{1,2})";
+
 
     private void save_payment_to_db(String sms){
         String amount=getAmountFromMessage(sms);
@@ -114,36 +115,31 @@ public class MainActivity extends AppCompatActivity {
     private String getAmountFromMessage(String sms) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(sms);
-        String amount;
-        if (matcher.find()){
-            amount=matcher.group(0);
+        String amount="null";
+        if (matcher.find()) {
+            amount = matcher.group(1);
+        }
             return amount;
         }
-        return "null";
-    }
-
     private String getDateFromMessage(String sms) {
-        Pattern pattern2 = Pattern.compile(regex2);
-        Matcher matcher2 = pattern2.matcher(sms);
-        String date_string;
-        if (matcher2.find()){
-            date_string = matcher2.group();
-            return date_string;
+        Pattern pattern = Pattern.compile(regex2);
+        Matcher matcher = pattern.matcher(sms);
+        String date="null";
+        if (matcher.find()) {
+            date = matcher.group(1);
         }
-        return "null";
-    }
+            return date;
+        }
+
     private String getTimeFromMessage(String sms) {
-        Pattern pattern3 = Pattern.compile(regex3);
-        Matcher matcher3 = pattern3.matcher(sms);
-        String time_string;
-        if (matcher3.find()){
-            time_string = matcher3.group();
-            return time_string;
+        Pattern pattern = Pattern.compile(regex3);
+        Matcher matcher = pattern.matcher(sms);
+        String time="null";
+        if (matcher.find()) {
+            time = matcher.group(1);
         }
-        return "null";
-    }
-
-
+            return time;
+        }
 
     private void registerBroadcastReceiver() {
         smsBroadcastReceiver = new MySmsReceiver();
@@ -169,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
 //        dbHandler=new this.getWri;
 //        dbHandler.this.getWr
 //    }
+
+
     @Override
     protected void onStart() {
         super.onStart();

@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
 public class DBHandler extends SQLiteOpenHelper {
+ExpenseActivity ob=new ExpenseActivity();
 
     private static final String DB_NAME="expenses";
     private static final int DB_VERSION = 1;
@@ -34,6 +34,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + AMOUNT + " TEXT,"
                 + REASON + " TEXT)";
         db.execSQL(query);
+
     }
 
 
@@ -74,14 +75,14 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<model> fetchContact(String cal_date){
         SQLiteDatabase db = this.getReadableDatabase();
         model model_obj=new model();
-        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  model_obj.date_string + " == "+ cal_date, null);
-
+//        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  model_obj.date_string + " = "+ ob.cal_date, null);
+        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
 
         ArrayList<model> arrDetails = new ArrayList<>();
 
         while(cursor.moveToNext()){
 //            model model_obj=new model();
-            model_obj.amount= cursor.getString(0);
+            model_obj.amount= cursor.getString(3);
             model_obj.date_string= cursor.getString(1);
             model_obj.time_string= cursor.getString(2);
 
