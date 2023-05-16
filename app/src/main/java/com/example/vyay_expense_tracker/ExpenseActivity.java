@@ -26,10 +26,10 @@ public class ExpenseActivity extends AppCompatActivity {
     private ImageView imageView;
     private FirebaseAuth authProfile;
 
-    String  cal_date;
+   public String  cal_date;
     public DBHandler dbHandler_cal;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
 
@@ -43,21 +43,27 @@ public class ExpenseActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 cal_date = (month + 1) + "-" + dayOfMonth + "-" + year;
-                Log.d("date", cal_date);
+//                Log.d("date", cal_date);
 
+
+                ArrayList<model> arrDetails =dbHandler_cal.fetchContact(cal_date);
+                int size2 = arrDetails.size();
+                String st="";
+//                for (int i = 0; i < size2; i++) {
+//                    Log.d("amount",  arrDetails.get(0).amount, "date",arrDetails.get(0).date_string );
+                Log.d("amount", arrDetails.get(3).amount );
+                Log.d("date", arrDetails.get(1).date_string );
+                Log.d("time", arrDetails.get(2).time_string );
+
+//                    st= st+" : "+arrDetails.get(i).toString();
+//                }
+//                Toast.makeText(this, Toast.LENGTH_SHORT).show();
 //                                                     textView3.setText(todaydate);
             }
 
 
         });
-        ArrayList<model> arrDetails =dbHandler_cal.fetchContact(cal_date);
-        int size2 = arrDetails.size();
-        String st="";
-        for (int i = 0; i < size2; i++) {
-            Log.d("amount",  arrDetails.get(i).amount);
-            st= st+" : "+arrDetails.get(i).toString();
-        }
-        Toast.makeText(this,st, Toast.LENGTH_SHORT).show();
+
         }
 //    we have cal_date
 
