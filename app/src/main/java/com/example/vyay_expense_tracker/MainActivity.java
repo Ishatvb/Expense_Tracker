@@ -165,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
 //        dbHandler=new this.getWri;
 //        dbHandler.this.getWr
 //    }
+
+
     @Override
     protected void onStart() {
         super.onStart();
