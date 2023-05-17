@@ -1,6 +1,9 @@
 package com.example.vyay_expense_tracker;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -42,11 +45,22 @@ public class ExpenseActivity extends AppCompatActivity {
         calendarView2.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                cal_date = (month + 1) + "-" + dayOfMonth + "-" + year;
-//                Log.d("date", cal_date);
+                cal_date = dayOfMonth + "-" + (month + 1) + "-" + year;
+                Log.d("date", cal_date);
 
+                String query="SELECT * FROM " + DBHandler.TABLE_NAME + " WHERE " + DBHandler.DATE + " = "+ cal_date;
 
-                ArrayList<model> arrDetails =dbHandler_cal.fetchContact(cal_date);
+                SQLiteDatabase db = dbHandler_cal.getReadableDatabase();
+                Cursor cursor = db.rawQuery(query,null);
+                //String data=cursor.getString(0);
+//                String c1=cursor.getString(1);
+//                String c2=cursor.getString(2);
+//                String c3=cursor.getString(3);
+//                Log.d("data",c1=" "+c2+" "+c3);
+//                String data=c1=" "+c2+" "+c3;
+                //Toast.makeText(ExpenseActivity.this, data, Toast.LENGTH_SHORT).show();
+                cursor.close();
+                /*ArrayList<model> arrDetails =dbHandler_cal.fetchContact(cal_date);
                 int size2 = arrDetails.size();
                 String st="";
 //                for (int i = 0; i < size2; i++) {
@@ -54,11 +68,11 @@ public class ExpenseActivity extends AppCompatActivity {
                 Log.d("amount", arrDetails.get(3).amount );
                 Log.d("date", arrDetails.get(1).date_string );
                 Log.d("time", arrDetails.get(2).time_string );
-
+*/
 //                    st= st+" : "+arrDetails.get(i).toString();
 //                }
 //                Toast.makeText(this, Toast.LENGTH_SHORT).show();
-//                                                     textView3.setText(todaydate);
+//              textView3.setText(todaydate);
             }
 
 

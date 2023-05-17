@@ -8,15 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 public class DBHandler extends SQLiteOpenHelper {
-ExpenseActivity ob=new ExpenseActivity();
-
     private static final String DB_NAME="expenses";
     private static final int DB_VERSION = 1;
-    private static final String TABLE_NAME = "dailyExpenseTable";
+    public static final String TABLE_NAME = "dailyExpenseTable";
     private static final String SNO = "sno";
-    private static final String DATE = "date";
-    private static final String TIME = "time";
-    private static final String AMOUNT = "amount";
+    public static final String DATE = "date";
+    public static final String TIME = "time";
+    public static final String AMOUNT = "amount";
     private static final String REASON = "reason";
 
     public DBHandler(Context context) {
@@ -70,29 +68,29 @@ ExpenseActivity ob=new ExpenseActivity();
 //}
 
 
+//
+//    public ArrayList<model> fetchContact(String cal_date){
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        model model_obj=new model();
+//        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  model_obj.date_string + " = "+ cal_date, null);
+////        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
+//
+//        ArrayList<model> arrDetails = new ArrayList<>();
+//
+//        while(cursor.moveToNext()){
+////            model model_obj=new model();
+//            model_obj.amount= cursor.getString(3);
+//            model_obj.date_string= cursor.getString(1);
+//            model_obj.time_string= cursor.getString(2);
+//
+//            arrDetails.add(model_obj);
 
-    public ArrayList<model> fetchContact(String cal_date){
-        SQLiteDatabase db = this.getReadableDatabase();
-        model model_obj=new model();
-//        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " +  model_obj.date_string + " = "+ ob.cal_date, null);
-        Cursor cursor =db.rawQuery("SELECT * FROM " + TABLE_NAME , null);
-
-        ArrayList<model> arrDetails = new ArrayList<>();
-
-        while(cursor.moveToNext()){
-//            model model_obj=new model();
-            model_obj.amount= cursor.getString(3);
-            model_obj.date_string= cursor.getString(1);
-            model_obj.time_string= cursor.getString(2);
-
-            arrDetails.add(model_obj);
 
 
+//        }
+//        return arrDetails;
 
-        }
-        return arrDetails;
-
-    }
+//    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
